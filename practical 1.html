@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Student Marks Calculator</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background: rgb(206, 216, 245);
+        }
+        .box {
+            background: rgb(230, 152, 35);
+            padding: 20px;
+            width: 350px;
+            margin: auto;
+            margin-top: 50px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgb(44, 114, 226);
+        }
+        input, button {
+            margin: 5px;
+            padding: 10px;
+            width: 80%;
+        }
+        #result {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h2>Marks & Grade Calculator</h2>
+
+    <input type="number" id="subjects" placeholder="  Enter number of subjects">
+    <button onclick="enterMarks()">Enter Marks</button>
+
+    <div id="marksInput"></div>
+
+    <button onclick="calculate()">Calculate</button>
+
+    <div id="result"></div>
+</div>
+
+<script>
+    function enterMarks() {
+        let n = document.getElementById("subjects").value;
+        let container = document.getElementById("marksInput");
+        container.innerHTML = "";
+
+        for (let i = 1; i <= n; i++) {
+            container.innerHTML += 
+                `<input type="number" class="mark" placeholder="Marks of Subject ${i}"><br>`;
+        }
+    }
+
+    function calculate() {
+        let marks = document.getElementsByClassName("mark");
+        let total = 0;
+
+        for (let i = 0; i < marks.length; i++) {
+            total += Number(marks[i].value);
+        }
+
+        let avg = total / marks.length;
+        let grade = "";
+        let result = "";
+
+        
+    
+
+        
+        result = avg >= 40 ? "Pass" : "Fail";
+
+        document.getElementById("result").innerHTML =
+            `Total: ${total} <br>
+             Average: ${avg.toFixed(2)} <br>
+             Grade: ${grade} <br>
+             Result: ${result}`;
+    }
+</script>
+
+</body>
+</html>
