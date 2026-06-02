@@ -7,3 +7,8 @@ const mypromise = new Promise((resolve,reject) =>
         reject("not eligible")
     }
 })
+const checkvotereligibility = async ( ) =>{
+    const response=await mypromise;
+    console.log(response);
+}
+checkvotereligibility();
